@@ -1,0 +1,107 @@
+#mainbody h1{
+	padding-left:35px;
+	background: url(h11.png) no-repeat; 
+}
+#mainbody #about ul,#mainbody #about li{
+	list-style-type: none;
+}
+#mainbody #about ul#aboutHeader{
+	overflow: hidden;
+	background: #abcdef;
+	border:2px solid;
+	border-left: none; 
+	border-right: none; 
+	font-weight: bold;
+}
+#mainbody #about ul#aboutHeader li{
+	display: block;
+	float: left;
+	//margin-right: 100px;
+	padding: 0 25px 0 25px;
+	//border: 1px solid;
+	width:90px;
+	//text-align: right;
+}
+#mainbody #about ul#aboutHeader li.bbs{
+	background: url(bbs.png) no-repeat 0%;
+}
+#mainbody #about ul#aboutHeader li.accumulation{
+	background: url(accumulation.png) no-repeat 5%;
+}
+#mainbody #about ul#aboutHeader li.developerBlog{
+	background: url(developerBlog.png) no-repeat 0%;
+}
+#mainbody #about ul#aboutHeader li.navigation{
+	background: url(navigation.png) no-repeat 3%;
+}
+#mainbody #about ul#aboutHeader li.exercise{
+	background: url(exercise.png) no-repeat 3%;
+}
+#mainbody #about ul#aboutHeader li.relax{
+	background: url(relax.png) no-repeat 0%;
+}
+#mainbody #about ul#aboutHeader li.bbs:hover,#mainbody #about ul#aboutHeader li.accumulation:hover,
+#mainbody #about ul#aboutHeader li.developerBlog:hover,#mainbody #about ul#aboutHeader li.navigation:hover,
+#mainbody #about ul#aboutHeader li.exercise:hover,#mainbody #about ul#aboutHeader li.relax:hover{
+	background-color: #fff;
+}
+/*The code above was replaced by the JavaScript*/
+#mainbody #about #content{
+	height: 250px;
+	position: relative;
+	background: #fff;
+	border-bottom: 2px solid;
+
+}
+/*#mainbody #about #content #bbs{
+	position: absolute;
+	left:0px;
+	top:0;
+}
+#mainbody #about #content #accumulation{
+	position: absolute;
+	left:140px;
+	top:0;
+}
+#mainbody #about #content #blog{
+	position: absolute;
+	left:280px;
+	top:0;
+}
+#mainbody #about #content #navigation{
+	position: absolute;
+	left:420px;
+	top:0;
+}
+#mainbody #about #content #exercise{
+	position: absolute;
+	left:560px;
+	top:0;
+}
+#mainbody #about #content #relax{
+	position: absolute;
+	left:700px;
+	top:0;
+}
+The code above could be replaced by the following five lines */
+#mainbody #about #content ul{
+	float:left;
+	width: 135px;
+	height: 250px;
+	padding-left: 5px;
+}
+#mainbody #about #content a:link,#mainbody #about #content a:visited{
+	display: block;
+	text-decoration: none;
+	color: #000;
+}
+#mainbody #about #content a:hover,#mainbody #about #content a:active{
+	text-decoration: underline;
+}
+#mainbody #about #content a.hidden{
+	display: none;
+}
+#mainbody #about #content .show{
+	display:block;
+	background-color: #fff;
+}

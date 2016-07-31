@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--The latest modified date: 16th/June/2016-->
+	<title>Garnett's Blog: for the better front end</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="main_about.css">
+	<link rel="shortcut icon" type="image/png" href="favicon.png">
+	<style type="text/css">
+		*{
+		margin:0px;
+		padding:0px;
+		}
+		hr{
+		margin:10px 0px;
+		}
+		#wrap{
+		width:1200px;
+		margin:0 auto;
+		}
+		#header{
+		width:100%;
+		//margin-top:30px;
+		//border:2px dotted maroon;
+		position:relative;
+		overflow:hidden;
+		font-family:"microsoft yahei",times;
+		}
+		#header #title{
+		position:absolute;
+		top:15%; right:3%;
+		color:white;
+		z-index:1;
+		text-align:right;
+		}
+		#header #title h1{
+		font-size:50px;
+		}
+		#header #title p{
+		font-style:italic;
+		font-size:25px;
+		}
+		#header #back img{
+		width:100%;
+		//opacity:0.6;
+		border-radius: 3em;
+		}
+		#header #menu{
+		position:absolute;
+		top:17%; left:3%;
+		color:white;
+		}
+		#header #menu ul li{
+		display:inline;
+		list-style:none;
+		margin-right:20px;
+		font-weight:bold;
+		font-size:25px;
+
+		}
+		#header #menu ul li a:link,#header #menu ul li a:visited{
+		text-decoration:none;
+		color:white;
+		}
+		#header #menu ul li a:hover{
+		text-decoration:underline;
+		color:white;
+		}
+		#mainbody{
+		//border:1px solid;
+		float:left;
+		width:70%;
+		font-family:"microsoft yahei";
+		line-height:200%;
+		}
+		#mainbody h1{
+		margin:50px auto 20px;
+
+		}
+		#mainbody p{
+		margin:auto 50px;
+		text-indent:2em;
+		}
+		#mainbody #article a:link,#mainbody #article a:visited{
+		text-decoration:none;
+		color:black;
+		}
+		#mainbody #article a:hover{
+		text-decoration:underline;
+		}
+		#mainbody #music{
+		margin:50px auto;
+		}
+		#navi{
+		position:fixed;
+		left:50%;
+		margin-left:250px;
+		width:100px;
+		border:1px solid #abcdef;
+		clear:both;
+		font-family:"microsoft yahei";
+		font-size:25px;
+		}
+
+		#navi ul li{
+		list-style:none;
+		margin-bottom:5px;
+		text-align:center;
+		font-weight:bold;
+		padding:10px;
+		background-color:#abcdef;
+		}
+		#navi ul li a:link,#navi ul li a:visited{
+		text-decoration:none;
+		color:white;
+		}
+		#navi ul li a:hover{
+		text-decoration:underline;
+		}
+		#wrap_right{
+		width:240px;
+		clear:both;
+		position:absolute;
+		left:50%;
+		margin-left:360px; margin-top:50px;
+		font-family:"microsoft yahei";
+		//font-size:20px;
+		}
+		#wrap_right img{
+		width:150px;
+		border-radius: 1em;
+		}
+		#wrap_right #schedule{
+		width:236px;
+		height:298px;
+		border:2px solid #abcdef;
+		overflow:hidden;
+		}
+		#wrap_right #schedule-tit{
+		height:30px;
+		position:relative;
+		background:#abcdef;
+		}
+		#wrap_right #schedule-tit ul{
+		position:absolute;
+		width:239px;
+		left:-1px;
+		}
+		#wrap_right #schedule-tit ul li{
+		float:left;
+		width:32px;
+		height:29px;
+		padding:0 1px;
+		line-height:29px;
+		text-align:center;
+		overflow:hidden;
+		//background:#abcdef;
+		border-bottom:1px solid #abcdef;
+		}
+		#wrap_right #schedule-tit ul li.select{
+		background:#fff;
+		border-bottom-color:#fff;
+		border-left:1px solid #fff;
+		border-right:1px solid #fff;
+		padding:0px;
+		font-weight:bold;
+		}
+		#wrap_right #schedule-con{
+		width:220px;
+		margin:10px auto;
+		}
+		#wrap_right #schedule-con table{
+		margin:0 auto;
+		height:250px;
+		padding:0 20px;
+		}
+		/*table,tr,td{
+		border:1px solid;
+		}*/
+		#wrap_right #schedule-con table td{
+		vertical-align:middle;
+		}
+		#wrap_right #schedule-con table td ul,#wrap_right #schedule-con table td li{
+		list-style:none;
+		}
+		/*#wrap_right #schedule-con .mod li{
+		height:80px;
+		line-height:80px;
+		text-align:center;
+
+		}*/
+		#footer{
+		width:100%;
+		text-align:center;
+		font-family:"microsoft yahei";
+		overflow:hidden;
+		//clear:both;
+		}
+		//img{border:1px solid;
+		display:block;}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var date=new Date();
+			var day=date.getDay();
+			//var day1=day+6;
+			var titles=document.getElementById("schedule-tit").getElementsByTagName("li");
+			var cons=document.getElementById("schedule-con").getElementsByTagName("div");
+			for(var i=0;i<titles.length;i++)
+			{
+				titles[i].id=i;
+				titles[(day+6)%7].className="select";
+				cons[(day+6)%7].style.display="block";
+				titles[i].onmouseover=function(){
+				for(var j=0;j<titles.length;j++){
+				titles[j].className="";
+				titles[j].style.background="#abcdef";
+				cons[j].style.display="none";
+				}
+				this.className="select";
+				cons[this.id].style.display="block";
+				//alert(this.id);
+				var k=this.id;
+				/*switch (k){
+				case 0:
+				alert(1)
+				break;
+				case 1:
+				alert(1);
+				break;
+				case 2:
+				alert(1);
+				break;
+				case 3:
+				alert(1);
+				break;
+				case 4:
+				alert(1);
+				break;
+				case 5:
+				alert(1);
+				break;
+				case 6:
+				alert(1);
+				break;
+				}*/
+				if(k==0)this.style.background="red";
+				if(k==1)this.style.background="orange";
+				if(k==2)this.style.background="yellow";
+				if(k==3)this.style.background="green";
+				if(k==4)this.style.background="blue";
+				if(k==5)this.style.background="rgb(64, 34, 141)";
+				if(k==6)this.style.background="purple";
+				}
+				}
+			var aboutHeader=document.getElementById("aboutHeader").getElementsByTagName("li");
+			var aboutContent=document.getElementById('content').getElementsByTagName('ul');
+			for(var i=0;i<aboutHeader.length;i++){
+				aboutHeader[i].id=i;
+				aboutHeader[i].onmouseover=function(){
+				//console.log(this.id);
+				for(var j=0;j<aboutHeader.length;j++){
+					//aboutHeader[j].style.background='#abcdef';
+					aboutContent[j].style.background='#fff';
+				}
+				//console.log(this.id);
+				//this.style.background='#fff';
+				aboutContent[this.id].style.background='#abcdef';
+
+			}
+			}
+		}
+		
+	</script>
+</head>
+<body>
+	<div id="wrap">
+	    <div id="header">
+	        <div id="title">
+	            <h1>Garnett's&nbsp;Blog</h1><br /><br />
+	            <p>Focus&nbsp;&nbsp;&amp;&nbsp;&nbsp;Persistence</p>
+	        </div>
+	        <div id="back"> 
+	            <img src="1+.jpg" alt="Paris Tower" />
+	        </div>
+	        <div id="menu">
+	            <ul>
+	                <li><a href="#">Home</a></li>
+	                <li><a href="#about">About</a></li>
+	                <li><a href="#article">Article</a></li>
+	                <li><a href="#music">Music</a></li>
+	            </ul>
+	        </div>
+	    </div>
+	    <div id="mainbody">
+	        <div id="about">
+	            <h1>Front End Daily</h1>
+	            <ul id="aboutHeader">
+	            	<li class="bbs">社区</li>
+	            	<li class="accumulation">聚合</li>
+	            	<li class="developerBlog">博客</li>
+	            	<li class="navigation">导航</li>
+	            	<li class="exercise">实战</li>
+	            	<li class="relax">&nbsp;休闲</li>
+	            </ul>
+	            <div id="content">
+		            <ul id="bbs">
+						<li><a href="http://stackoverflow.com/" target="_blank">StackOverFlow</a></li>
+		            	<li><a href="http://www.w3cfuns.com/" target="_blank">前端网</a></li>
+						<li><a href="http://www.w3ctech.com/" target="_blank">W3CTECH</a></li>
+						<li><a href="http://www.html-js.com/" target="_blank">前端乱炖</a></li>
+						<li><a href="http://gold.xitu.io/welcome/frontend" target="_blank">掘金</a></li>
+		            </ul>
+		            <ul id="accumulation">
+		            	<li><a href="http://www.kancloud.cn/jikeytang/qq/81129" target="_blank">前端开发</a></li>
+		            	<li><a href="http://old.75team.com/weekly/" target="_blank">奇舞周刊</a></li>
+		            	<li><a href="https://www.qianduan.net/" target="_blank">前端观察</a></li>
+		            	<li><a href="http://www.w3cplus.com/" target="_blank">W3CPLUS</a></li>
+						<li><a href="http://f2er.club/" target="_blank">前端人的俱乐部</a></li>
+						<li><a href="http://www.daqianduan.com/" target="_blank">大前端</a></li>
+						<li><a href="http://javascript.ruanyifeng.com/" target="_blank">JS标准参考教程</a></li>
+		            </ul>
+		            <ul id="blog">
+		            	<li><a href="http://www.ruanyifeng.com/home.html" target="_blank">阮一峰的博客</a></li>
+		            	<li><a href="http://www.zhangxinxu.com/wordpress/" target="_blank">张鑫旭的博客</a></li>
+
+		            </ul>
+		            <ul id="navigation">
+		            	<li><a href="http://uicss.cn/daohang/" target="_blank">前端导航</a></li>
+		            </ul>
+		            <ul id="exercise">
+		            	<li><a href="https://github.com/garnett555" target="_blank">我的GitHub</a></li>
+		            	<li><a href="https://leetcode.com/" target="_blank">LeetCode</a></li>
+		            	<li><a href="http://www.imooc.com/" target="_blank">慕课网</a></li>
+		            	<li><a href="http://ife.baidu.com/task/all" target="_blank">百度前端技术学院</a></li>
+		            </ul>
+		            <ul id="relax">
+		            	<li><a href="https://www.zhihu.com/" target="_blank">知乎</a></li>
+		            	<li><a href="http://www.tuicool.com/" target="_blank">推酷</a></li>
+		            	<li><a href="http://nba.hupu.com/" target="_blank">虎扑</a></li>
+		            	<li><a href="http://open.163.com/" target="_blank">网易公开课</a></li>
+		            	<li><a href="https://bbs.byr.cn/#!default" target="_blank">北邮人论坛</a></li>
+		            	<li><a href="http://gate.guokr.com/" target="_blank">果壳任意门</a></li>
+		            </ul>
+		        </div>
+	            
+	        </div>
+	        <div id="article">
+			<h1><a href="http://www.w3cfuns.com/notes/27667/55fe7fbfb4e951f80af38ba72964d392.html" target="_blank">标签页之标题栏布局_Jun. 23rd, 2016</a></h1>
+		    <p><i>最近在搭个人的博客，是一个包含点JS交互的静态页面，在搭的过程中一边摸索，也一边碰墙。一个困扰我很久的问题是Tab标签页，问题并不是出在JS上，而是出在布局上。先给大家看一下最终要实现的效果，是一个标签页样式的日程表</i></p><br /><hr />
+		    <h1><a href="http://www.imooc.com/article/8287" target="_blank">使用setTimeout()方法实现计时器_Mar. 26th, 2016</a></h1>
+		    <p><i>这篇文章介绍一下如何通过setTimeout()方法实现计时器，原理很简单，笔者通过这篇文章，也顺便梳理一下自己的知识。超时调用需要使用window对象的setTimeout()方法，它接受两个参数：要执行的代码和以毫秒表示的时间。——摘录自《JavaScript高级程序设计》</i></p><br /><hr />
+		    <h1><a href="http://www.imooc.com/article/7165" target="_blank">JavaScript编程挑战：选项卡切换分步解析_Mar. 3rd, 2016</a></h1>
+		    <p><i>介绍一下做选项卡切换任务时的思路吧，顺便梳理一下就当是对自己学习的一个检验和总结。 我一般习惯先写html代码，因为大家常把html比喻成一间房子的结构，先把结构搭起来，再“刷墙放家具”可能会更顺手一点，不过每个人都有自己的风格，找到适合自己的方式最重要。</i></p><br /><hr />
+			</div>
+	        <div id="music">
+	            <audio src="1.mp3" controls="controls" loop="loop"></audio>
+	        </div>
+	    </div>
+	    <div id="navi">
+	            <ul>
+	                <li><a href="#about">About</a></li>
+	                <li><a href="#article">Article</a></li>
+	                <li><a href="#music">Music</a></li>
+			<li><a href="#">TOP</a></li>
+	            </ul>
+	    </div>
+	    <div id="wrap_right">
+	        <div id="album">
+		    <h2>Album</h2>
+		    <br />
+		    <img src="2.jpg" alt="Dora Emon" />
+	        </div><hr />
+		<div id="aboutMe">
+		    <h2>About Me</h2>
+		    <br />
+		    <img src="3.jpg" alt="Ning Garnett" />
+		    <p>专注和坚持，就足够了，做好每一件小事，就是干大事！
+		    </p><br />
+		</div><hr />
+	        <h2>My Schedule</h2>
+		<br />
+		<div id="schedule">
+		    
+		    <div id="schedule-tit">
+		        
+
+			<ul>
+			    <li>M.</li>
+			    <li>Tu.</li>
+			    <li>W.</li>
+			    <li>Th.</li>
+			    <li>F.</li>
+			    <li>Sa.</li>
+			    <li>Su.</li>
+		        </ul>
+		    </div>
+		    <div id="schedule-con">
+		        <div class="mod" style="display:none">
+				<table>
+					<tbody>
+						<tr><td><b>Morning </b><i>Studt W3C</i></td></tr>
+						<tr><td><b>Afternoon </b><i>Studt W3C</i></td></tr>
+						<tr><td><b>Evening </b><i>Studt W3C</i></td></tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="mod" style="display:none">
+				<table>
+					<tbody>
+						<tr><td><b>Morning </b><i>Attend Uncertain Theory</i></td></tr>
+						<tr><td><b>Afternoon </b><i>Attend Medical Detection Technology</i></td></tr>
+						<tr><td><b>Evening </b><i>Studt W3C</i></td></tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="mod" style="display:none">
+				<table>
+					<tbody>
+						<tr><td><b>Morning </b><i>Studt W3C</i></td></tr>
+						<tr><td><b>Afternoon </b><i>Studt W3C</i></td></tr>
+						<tr><td><b>Evening </b><i>Attend Cyto-skeleton</i></td></tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="mod" style="display:none">
+				<table>
+					<tbody>
+						<tr><td><b>Morning </b><i>Attend Uncertain Theory</i></td></tr>
+						<tr><td><b>Afternoon </b><i>Studt W3C</i></td></tr>
+						<tr><td><b>Evening </b><i>Studt W3C</i></td></tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="mod" style="display:none">
+				<table>
+					<tbody>
+						<tr><td><b>Morning </b><i>Studt W3C</i></td></tr>
+						<tr><td><b>Afternoon </b><i>Studt W3C</i></td></tr>
+						<tr><td><b>Evening </b><i>Studt W3C</i></td></tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="mod" style="display:none">
+				<table>
+					<tbody>
+						<tr><td><b>Morning </b><i>Studt W3C</i></td></tr>
+						<tr><td><b>Afternoon </b><i>Studt W3C</i></td></tr>
+						<tr><td><b>Evening </b><i>Studt W3C</i></td></tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="mod" style="display:none">
+				<table>
+					<tbody>
+						<tr><td><b>Morning </b><i>Studt W3C</i></td></tr>
+						<tr><td><b>Afternoon </b><i>Laboratory Conference</i></td></tr>
+						<tr><td><b>Evening </b><i>Studt W3C</i></td></tr>
+					</tbody>
+				</table>
+			</div>
+	            </div>
+		</div>
+	    </div>
+	    <div id="footer">Copyright &copy; Garnett Blog 2016</div>
+	</div>
+</body>
+</html>
